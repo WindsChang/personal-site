@@ -72,9 +72,33 @@ h1, h2, h3 {
 }
 
 .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 700;
     color: var(--text);
     text-decoration: none;
+}
+
+.brand-mark {
+    width: 36px;
+    height: 36px;
+}
+
+.footer-logo {
+    display: block;
+    width: 240px;
+    max-width: 70%;
+    height: auto;
+    margin: 0 auto 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* 墨跡為透明底黑字，深色模式反相成白字 */
+    .brand-mark,
+    .footer-logo {
+        filter: invert(1);
+    }
 }
 
 .site-nav {
