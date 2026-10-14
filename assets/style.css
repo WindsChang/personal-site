@@ -85,18 +85,29 @@ h1, h2, h3 {
     height: 36px;
 }
 
-.footer-logo {
+.contact-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.contact-text {
+    min-width: 0;
+}
+
+.contact-logo {
     display: block;
-    width: 240px;
-    max-width: 70%;
+    width: 340px;
+    max-width: 45%;
     height: auto;
-    margin: 0 auto 16px;
+    flex-shrink: 0;
 }
 
 @media (prefers-color-scheme: dark) {
     /* 墨跡為透明底黑字，深色模式反相成白字 */
     .brand-mark,
-    .footer-logo {
+    .contact-logo {
         filter: invert(1);
     }
 }
@@ -298,6 +309,17 @@ h1, h2, h3 {
 @media (max-width: 640px) {
     .hero h1 {
         font-size: 1.7rem;
+    }
+
+    .contact-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .contact-logo {
+        width: 240px;
+        max-width: 80%;
     }
 
     .hero-inner {
