@@ -1,0 +1,700 @@
+/* 水墨風格 CSS - 使用米黃色為基底，營造江湖感 */
+:root {
+    /* 米黃色彩調為主基調 */
+    --bg: #f5f0e6; /* 墨跡的淺米黃色背景 */
+    --bg-alt: #f0e8d9; /* 淡黃灰色塊 */
+    --text: #3c2f20; /* 深棕色文字 */
+    --muted: #7a6550; /* 灰棕色點綴文字 */
+    --accent: #6d4d2d; /* 墨綠色點綴色 */
+    --accent-text: #f5f0e6; /* 用於點綴色的淺色文字 */
+    --border: #d0c0a0; /* 淡黃褐色邊框線 */
+    --card: #ffffff; /* 卡片背景設為乾淨白色 */
+    --shadow-color: rgba(109, 77, 45, 0.15); /* 半透明陰影，增強層次感 */
+}
+
+/* 深色模式的水墨風格 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #2a2015; /* 深棕色背景 */
+        --bg-alt: #3a3020; /* 更深一點的棕色 */
+        --text: #e8e0d0; /* 淺灰棕色文字 */
+        --muted: #b8a585; /* 淺灰色文字 */
+        --accent: #8d704d; /* 深棕色點綴色 */
+        --accent-text: #1a1309; /* 深色背景配淺色文字 */
+        --border: #5a4a35; /* 深棕色邊框線 */
+        --card: #4a3a2a; /* 卡片使用深棕調色 */
+        --shadow-color: rgba(109, 77, 45, 0.2); /* 半透明陰影，增強層次感 */
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 64px;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans TC", "Microsoft JhengHei", serif, sans-serif;
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    /* 水墨紋理背景 */
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(#d0c0a0 1px, transparent 1px),
+        radial-gradient(#d0c0a0 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #8d704d;
+    border-bottom: 1px dotted var(--accent);
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+    margin: 0 0 0.5em;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", serif;
+    /* 添加一點傳統書法感 */
+    letter-spacing: 1px;
+}
+
+/* 水墨風格標題 */
+.section h2 {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 24px;
+}
+
+.section h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+/* 導覽列 */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(245, 240, 230, 0.95); /* 半透明背景 */
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+
+@media (prefers-color-scheme: dark) {
+    .site-header {
+        background: rgba(42, 32, 21, 0.95); /* 深色模式下半透明背景 */
+    }
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 56px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    
+    /* 水墨風格字體效果 */
+    font-family: "Noto Sans TC", "Microsoft JhengHei", serif;
+    letter-spacing: 2px;
+}
+
+.brand-mark {
+    width: 36px;
+    height: 36px;
+    filter: grayscale(100%) opacity(0.8);
+}
+
+.contact-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.contact-text {
+    min-width: 0;
+}
+
+.contact-logo {
+    display: block;
+    width: 340px;
+    max-width: 45%;
+    height: auto;
+    flex-shrink: 0;
+    
+    /* 添加水墨畫風格邊框 */
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+@media (prefers-color-scheme: dark) {
+    .contact-logo {
+        filter: brightness(0.9) opacity(0.8);
+    }
+}
+
+.site-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.site-nav a {
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 6px;
+    
+    /* 水墨風格切換效果 */
+    transition: all 0.3s ease;
+}
+
+.site-nav a:hover {
+    background: rgba(109, 77, 45, 0.1);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* 水墨風格選單按鈕 */
+.nav-toggle {
+    display: none;
+    background: rgba(109, 77, 45, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 6px 12px;
+    font: inherit;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle:hover {
+    background: rgba(109, 77, 45, 0.2);
+    transform: scale(1.05);
+}
+
+/* 區塊 */
+.hero {
+    padding: 72px 0 64px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(109, 77, 45, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(109, 77, 45, 0.05) 0%, transparent 20%);
+    pointer-events: none;
+}
+
+.hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--border);
+    background: #fff;
+    
+    /* 添加水墨風格邊框 */
+    box-shadow: 0 8px 16px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 8px;
+    
+    /* 添加傳統書法感 */
+    font-family: "Noto Sans TC", "Microsoft JhengHei", serif;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* 水墨風格標題裝飾 */
+.hero h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    bottom: -4px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    border-radius: 2px;
+}
+
+.lead {
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 1.1rem;
+    /* 添加一點傳統字體樣式 */
+    font-family: "Noto Sans TC", "Microsoft JhengHei", serif;
+}
+
+.section {
+    padding: 56px 0;
+}
+
+.section.alt {
+    background: var(--bg-alt);
+    position: relative;
+}
+
+.section.alt::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: radial-gradient(circle at center, var(--accent), transparent 50%);
+    opacity: 0.3;
+}
+
+.section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+    position: relative;
+    padding-left: 30px;
+}
+
+/* 水墨風格小裝飾點 */
+.section h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(109, 77, 45, 0.5);
+}
+
+.button {
+    display: inline-block;
+    background: linear-gradient(to bottom, var(--accent), #5a4020);
+    color: var(--accent-text);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    border: none;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.button:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px var(--shadow-color);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* 經歷時間軸 */
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 25px;
+    border-left: 3px solid var(--border);
+    position: relative;
+}
+
+.timeline li {
+    margin-bottom: 32px;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* 環形時間點裝飾 */
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+}
+
+.period {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.timeline h3 {
+    margin: 8px 0;
+    position: relative;
+}
+
+.timeline h3::before {
+    content: "「";
+    color: var(--accent);
+    margin-right: 4px;
+}
+
+.timeline h3::after {
+    content: "」";
+    color: var(--accent);
+    margin-left: 4px;
+}
+
+.timeline p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.97rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.timeline p::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 專長與卡片 */
+.skill-groups,
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.skill-group h3 {
+    font-size: 1.1rem;
+    color: var(--muted);
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    background: linear-gradient(to right, transparent 30%, var(--border) 30%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+}
+
+.skill-group h3::before {
+    content: "「";
+    color: var(--accent);
+    margin-right: 4px;
+}
+
+.skill-group h3::after {
+    content: "」";
+    color: var(--accent);
+    margin-left: 4px;
+}
+
+.tags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.tags li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    /* 添加水墨風格的邊框裝飾 */
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    opacity: 0.6;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    position: relative;
+    padding-right: 20px;
+}
+
+.card h3::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.card p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.card .meta {
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 0 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 8px;
+    
+    /* 水墨風格邊框 */
+    background: rgba(109, 77, 45, 0.05);
+}
+
+/* 頁尾 */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    color: var(--muted);
+    text-align: center;
+    position: relative;
+    background: rgba(245, 240, 230, 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+    .site-footer {
+        background: rgba(42, 32, 21, 0.8);
+    }
+}
+
+.site-footer p {
+    margin: 0;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", serif;
+    letter-spacing: 1px;
+}
+
+/* 自訂裝飾性元素 */
+.decoration-1 {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 添加水墨畫風的裝飾 */
+.decoration-element {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    
+    /* 水墨畫元素 */
+    background-image: 
+        radial-gradient(circle, #6d4d2d 1px, transparent 1px),
+        radial-gradient(circle, #6d4d2d 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-5deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(5px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* 添加背景動態效果 */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 行動版 */
+@media (max-width: 640px) {
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+
+    .contact-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .contact-logo {
+        width: 240px;
+        max-width: 80%;
+    }
+
+    .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .avatar {
+        width: 140px;
+        height: 140px;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .site-nav {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding-bottom: 8px;
+    }
+
+    .site-nav.open {
+        display: flex;
+    }
+
+    .site-nav a {
+        padding: 10px 0;
+        border-top: 1px solid var(--border);
+    }
+    
+    /* 響應式水墨紋理 */
+    body::before {
+        opacity: 0.1;
+    }
+}
