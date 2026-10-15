@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <filter id="wash" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="14"/>
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a8f8c" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#8a8f8c" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4d5350" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#4d5350" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f2321" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#1f2321" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#wash)">
+    <path fill="url(#far)" d="M0 250 L90 190 L160 225 L260 140 L340 210 L430 165 L540 235 L640 150 L740 220 L850 120 L950 215 L1060 160 L1160 230 L1270 150 L1360 205 L1440 170 L1440 420 L0 420Z"/>
+    <path fill="url(#mid)" d="M0 320 L120 250 L210 290 L330 205 L450 290 L560 240 L690 310 L800 225 L930 300 L1050 235 L1180 305 L1300 245 L1440 300 L1440 420 L0 420Z"/>
+    <path fill="url(#near)" d="M0 390 L140 340 L260 372 L400 325 L540 380 L700 345 L860 390 L1020 335 L1180 380 L1320 345 L1440 380 L1440 420 L0 420Z"/>
+  </g>
+</svg>
