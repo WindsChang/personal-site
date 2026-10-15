@@ -23,23 +23,17 @@
     });
 })();
 
-// 聯絡信箱：原始碼中只存編碼字串，點擊後才組出 mailto 連結，降低被爬蟲收集的機率
+// 聯絡信箱：原始碼中只存編碼字串，載入後才由 JS 組出 mailto 連結，降低被爬蟲收集的機率
 (function () {
     var link = document.getElementById('contact-email');
-    if (!link) {
+    var encoded = link && link.getAttribute('data-e');
+    if (!encoded) {
         return;
     }
 
-    link.addEventListener('click', function (e) {
-        var encoded = link.getAttribute('data-e');
-        if (!encoded) {
-            return;
-        }
-        e.preventDefault();
-        // 解碼：base64 還原後再反轉字串
-        var addr = atob(encoded).split('').reverse().join('');
-        link.textContent = addr;
-        link.href = 'mailto:' + addr;
-        link.removeAttribute('data-e');
-    });
+    // 解碼：base64 還原後再反轉字串
+    var addr = atob(encoded).split('').reverse().join('');
+    link.textContent = addr;
+    link.href = 'mailto:' + addr;
+    link.removeAttribute('data-e');
 })();

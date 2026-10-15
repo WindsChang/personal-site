@@ -457,22 +457,18 @@ h1, h2, h3 {
     min-width: 0;
 }
 
-/* 字標的紙底以 multiply 融入頁面 */
+/* 字標已去除紙底，只保留墨跡 */
 .contact-logo {
     display: block;
     width: 380px;
     max-width: 48%;
     height: auto;
     flex-shrink: 0;
-    mix-blend-mode: multiply;
-    -webkit-mask-image: radial-gradient(ellipse 50% 50% at center, #000 80%, transparent 100%);
-    mask-image: radial-gradient(ellipse 50% 50% at center, #000 80%, transparent 100%);
 }
 
 @media (prefers-color-scheme: dark) {
     .contact-logo {
-        mix-blend-mode: normal;
-        filter: invert(1) hue-rotate(180deg) brightness(0.9);
+        filter: invert(1) brightness(0.9);
     }
 }
 
